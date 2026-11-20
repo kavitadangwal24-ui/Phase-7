@@ -5,10 +5,17 @@ import fs from "fs";
 import File from "../models/File.js";
 import Project from "../models/Project.js";
 
+// Create absolute uploads directory
+const uploadDir = path.join(process.cwd(), "uploads");
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 // Multer storage configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/");
+    cb(null, uploadDir);
   },
 
   filename: (req, file, cb) => {
@@ -67,6 +74,8 @@ export const uploadFile = async (req, res) => {
       file: newFile,
     });
   } catch (error) {
+    console.error("File Upload Error:", error);
+
     res.status(500).json({
       success: false,
       message: error.message,
@@ -102,6 +111,8 @@ export const getProjectFiles = async (req, res) => {
       files,
     });
   } catch (error) {
+    console.error("Get Files Error:", error);
+
     res.status(500).json({
       success: false,
       message: error.message,
@@ -109,7 +120,7 @@ export const getProjectFiles = async (req, res) => {
   }
 };
 
-// Preview / access uploaded file
+// Preview uploaded file
 export const previewFile = async (req, res) => {
   try {
     const { fileId } = req.params;
@@ -123,7 +134,6 @@ export const previewFile = async (req, res) => {
       });
     }
 
-    // Check project membership
     const project = await Project.findOne({
       _id: file.project,
       members: req.user.id,
@@ -136,7 +146,6 @@ export const previewFile = async (req, res) => {
       });
     }
 
-    // Resolve the stored file path
     const absolutePath = path.resolve(file.filePath);
 
     if (!fs.existsSync(absolutePath)) {
@@ -165,6 +174,8 @@ export const previewFile = async (req, res) => {
       }
     });
   } catch (error) {
+    console.error("Preview File Error:", error);
+
     res.status(500).json({
       success: false,
       message: error.message,
