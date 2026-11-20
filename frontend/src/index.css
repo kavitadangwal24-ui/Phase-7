@@ -1,0 +1,116 @@
+
+:root {
+  /* Colors */
+  --cs-white: #ffffff;
+
+  --cs-slate-100: #f1f5f9;
+  --cs-slate-200: #e2e8f0;
+  --cs-slate-400: #94a3b8;
+  --cs-slate-500: #64748b;
+  --cs-slate-600: #475569;
+  --cs-slate-700: #334155;
+  --cs-slate-800: #1e293b;
+  --cs-slate-900: #0f172a;
+
+  --cs-blue-500: #3b82f6;
+  --cs-blue-600: #2563eb;
+
+  --cs-indigo-500: #6366f1;
+  --cs-indigo-600: #4f46e5;
+  --cs-indigo-700: #4338ca;
+
+  --cs-violet-400: #a78bfa;
+
+  --cs-lavender-50: #f5f3ff;
+  --cs-lavender-100: #ede9fe;
+  --cs-lavender-200: #ddd6fe;
+
+  --cs-danger: #dc2626;
+  --cs-danger-bg: #fef2f2;
+  --cs-danger-border: #fecaca;
+
+  --cs-success: #15803d;
+  --cs-success-bg: #f0fdf4;
+  --cs-success-border: #bbf7d0;
+
+  --cs-border: #e2e8f0;
+  --cs-surface: #ffffff;
+  --cs-text-muted: #64748b;
+
+  /* Gradients */
+  --cs-gradient-primary: linear-gradient(135deg, #6366f1, #2563eb);
+  --cs-gradient-soft: linear-gradient(135deg, #eef2ff, #f5f3ff);
+
+  /* Typography */
+  --cs-font: Arial, sans-serif;
+  --cs-font-mono: "Courier New", monospace;
+
+  /* Layout */
+  --cs-navbar-height: 72px;
+  --cs-sidebar-width: 250px;
+  --cs-sidebar-width-collapsed: 76px;
+  --cs-content-max: 1200px;
+
+  /* Radius */
+  --cs-radius-sm: 8px;
+  --cs-radius-md: 12px;
+  --cs-radius-lg: 18px;
+  --cs-radius-xl: 24px;
+
+  /* Shadows */
+  --cs-shadow-xs: 0 1px 3px rgba(15, 23, 42, 0.06);
+  --cs-shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --cs-shadow-md: 0 10px 25px rgba(15, 23, 42, 0.10);
+  --cs-shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.14);
+  --cs-shadow-primary: 0 8px 20px rgba(79, 70, 229, 0.25);
+
+  /* Transitions */
+  --cs-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --cs-transition: 0.25s ease;
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--cs-font);
+  color: var(--cs-slate-900);
+  background: #f8faff;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
